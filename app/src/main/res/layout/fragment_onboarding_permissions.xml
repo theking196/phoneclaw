@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground"
+    android:padding="@dimen/onboarding_input_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/spacing_lg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="♿"
+            android:textSize="@dimen/onboarding_emoji_section"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:layout_marginBottom="@dimen/spacing_lg" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Grant Permissions"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:textColor="?attr/colorOnBackground"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/spacing_sm" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All permissions can be skipped and granted later in Settings."
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/spacing_xl" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGrantAccessibility"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touch_large"
+            android:layout_marginBottom="@dimen/spacing_md"
+            android:text="♿ Enable Accessibility Service"
+            app:backgroundTint="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
+            app:cornerRadius="@dimen/radius_lg" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGrantMic"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touch_large"
+            android:layout_marginBottom="@dimen/spacing_md"
+            android:text="🎤 Grant Microphone"
+            app:backgroundTint="?attr/colorSurface"
+            app:strokeColor="?attr/colorOutline"
+            android:textColor="?attr/colorOnSurface" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGrantNotification"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touch_large"
+            android:layout_marginBottom="@dimen/spacing_md"
+            android:text="🔔 Grant Notification Access"
+            app:backgroundTint="?attr/colorSurface"
+            app:strokeColor="?attr/colorOutline"
+            android:textColor="?attr/colorOnSurface" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGrantSms"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touch_large"
+            android:layout_marginBottom="@dimen/spacing_md"
+            android:text="💬 Grant SMS (for 2FA auto-fill)"
+            app:backgroundTint="?attr/colorSurface"
+            app:strokeColor="?attr/colorOutline"
+            android:textColor="?attr/colorOnSurface" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Accessibility is required; others are optional but recommended."
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/spacing_sm" />
+
+    </LinearLayout>
+</ScrollView>

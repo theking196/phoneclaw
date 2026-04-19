@@ -1,0 +1,27 @@
+
+                        launchMedium();
+                        delay(5000);
+ //                       simulateClick(100, 1450);
+                        delay(5000);
+clickElementByViewId("com.medium.reader:id/new_story_button")  
+
+//                      simulateClick(650, 1350);
+                        speakText("Fetching blog post");
+var emailPrefix = split(email, "@")[0];
+
+                        var blogPost = fetchBlogPost(video.caption || "Blog", emailPrefix);
+                        speakText("Typing blog post");
+                        simulateType("com.medium.reader:id/common_edit_post_paragraph_text", blogPost);
+                        delay(5000);
+                        takeScreenshotAndUploadToLogs(email, "Medium: " + blogPost, server);
+                        delay(5000);
+                        clickNodesByContentDescription("Preview");
+                        delay(5000);
+                        simulateClick(575, 130);
+                        delay(5000);
+                        clickNodesByContentDescription("Publish now");
+                        delay(5000);
+                        simulateClick(360, 1440);
+                        delay(10000);
+                        checkAndRecoverFromStuckScreens();
+                        

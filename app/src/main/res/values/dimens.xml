@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ── Spacing (8dp baseline grid) ──────────────────────────────────── -->
+    <dimen name="spacing_xxs">2dp</dimen>
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    <dimen name="spacing_xxl">48dp</dimen>
+
+    <!-- Legacy aliases (deprecated, use above) -->
+    <dimen name="spacing_1">1dp</dimen>
+    <dimen name="spacing_2">2dp</dimen>
+    <dimen name="spacing_3">3dp</dimen>
+    <dimen name="spacing_6">6dp</dimen>
+    <dimen name="spacing_10">10dp</dimen>
+    <dimen name="spacing_12">12dp</dimen>
+    <dimen name="spacing_14">14dp</dimen>
+    <dimen name="spacing_20">20dp</dimen>
+    <dimen name="spacing_28">28dp</dimen>
+    <dimen name="handle_width">40dp</dimen>
+
+    <!-- Touch targets -->
+    <dimen name="touch_min">48dp</dimen>
+    <dimen name="touch_large">56dp</dimen>
+
+    <!-- ── Corner radius ─────────────────────────────────────────────────── -->
+    <dimen name="radius_xs">4dp</dimen>
+    <dimen name="radius_sm">8dp</dimen>
+    <dimen name="radius_md">12dp</dimen>
+    <dimen name="radius_lg">16dp</dimen>
+    <dimen name="radius_xl">24dp</dimen>
+    <dimen name="radius_pill">999dp</dimen>
+
+    <!-- Legacy aliases -->
+    <dimen name="radius_4">4dp</dimen>
+    <dimen name="radius_8">8dp</dimen>
+
+    <!-- ── Typography (sp) ───────────────────────────────────────────────── -->
+    <!-- ── Typography tokens (use in TextAppearance) ────────────────────────────── -->
+    <dimen name="text_xs">12sp</dimen>
+    <dimen name="text_sm">14sp</dimen>
+    <dimen name="text_md">16sp</dimen>
+    <dimen name="text_lg">20sp</dimen>
+    <dimen name="text_xl">24sp</dimen>
+    <dimen name="text_xxl">32sp</dimen>
+    <dimen name="text_headline">22sp</dimen>
+    <dimen name="text_title">18sp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_label">12sp</dimen>
+    <dimen name="text_caption">11sp</dimen>
+
+    <!-- Legacy aliases -->
+    <dimen name="text_2xs">10sp</dimen>
+
+    <!-- ── Elevation ─────────────────────────────────────────────────────── -->
+    <dimen name="elevation_none">0dp</dimen>
+    <dimen name="elevation_sm">2dp</dimen>
+    <dimen name="elevation_md">4dp</dimen>
+    <dimen name="elevation_lg">8dp</dimen>
+    <!-- Onboarding -->
+    <dimen name="onboarding_emoji">72sp</dimen>
+    <dimen name="onboarding_emoji_section">56sp</dimen>
+    <dimen name="onboarding_title">28sp</dimen>
+    <dimen name="onboarding_desc">16sp</dimen>
+    <dimen name="onboarding_example">14sp</dimen>
+    <dimen name="onboarding_example_padding">16dp</dimen>
+    <dimen name="onboarding_input_padding">28dp</dimen>
+
+    <dimen name="drawer_width">280dp</dimen>
+    <!-- ── Layout constraints ───────────────────────────────────────────── -->
+    <dimen name="chat_bubble_max_width">280dp</dimen>
+    <dimen name="recycler_padding_bottom_fab">88dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="avatar_text_size">28sp</dimen>
+    <dimen name="text_emoji_huge">64sp</dimen>
+    <dimen name="nav_bar_height">56dp</dimen>
+    <dimen name="app_bar_height">64dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="input_bar_height">80dp</dimen>
+    <dimen name="card_min_height">72dp</dimen>
+    <dimen name="code_editor_height">200dp</dimen>
+
+</resources>

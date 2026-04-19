@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_lg"
+        android:background="?android:colorBackground">
+
+        <!-- Handle bar -->
+        <View
+            android:layout_width="@dimen/handle_width"
+            android:layout_height="@dimen/spacing_xs"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/spacing_lg"
+            android:background="?attr/colorSurfaceVariant" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔗 Model Chain &amp; Fallbacks"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textColor="?attr/colorOnBackground"
+            android:layout_marginBottom="@dimen/spacing_sm" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="If the primary model fails, AutoPhone tries fallbacks in order."
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginBottom="@dimen/spacing_xl" />
+
+        <!-- Dynamic chain container -->
+        <LinearLayout
+            android:id="@+id/chainContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/spacing_md" />
+
+        <!-- Add fallback button (outlined) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addFallbackButton"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/touch_min"
+            android:text="+ Add Fallback"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textColor="?attr/colorPrimary"
+            app:backgroundTint="?attr/colorSurface"
+            app:strokeColor="?attr/colorPrimary"
+            app:cornerRadius="@dimen/radius_lg"
+            android:layout_marginBottom="@dimen/spacing_lg" />
+
+        <!-- Max Retries label -->
+        <TextView
+            android:id="@+id/maxRetriesLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Max retries per level: 1"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginBottom="@dimen/spacing_xs" />
+
+        <!-- Max Retries SeekBar -->
+        <SeekBar
+            android:id="@+id/maxRetriesSeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="4"
+            android:progress="0"
+            android:progressTint="@color/yellow"
+            android:thumbTint="@color/yellow"
+            android:layout_marginBottom="@dimen/spacing_lg" />
+
+        <!-- Retry Delay label -->
+        <TextView
+            android:id="@+id/retryDelayLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Retry delay: 1s"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginBottom="@dimen/spacing_xs" />
+
+        <!-- Retry Delay SeekBar -->
+        <SeekBar
+            android:id="@+id/retryDelaySeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="9"
+            android:progress="0"
+            android:progressTint="@color/peach"
+            android:thumbTint="@color/peach"
+            android:layout_marginBottom="@dimen/spacing_xl" />
+
+        <!-- Save Chain button (filled) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveChainButton"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touch_large"
+            android:text="Save Chain"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:backgroundTint="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
+            app:cornerRadius="@dimen/radius_lg" />
+
+    </LinearLayout>
+</ScrollView>

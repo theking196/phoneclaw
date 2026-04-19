@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <!-- Skills list with staggered animation -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/skillsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/spacing_md"
+        android:paddingEnd="@dimen/spacing_md"
+        android:paddingTop="@dimen/spacing_sm"
+        android:paddingBottom="@dimen/recycler_padding_bottom_fab"
+        android:scrollbars="vertical"
+        android:layoutAnimation="@anim/layout_staggered_bottom"
+        tools:listitem="@layout/item_skill_card" />
+
+    <!-- Empty state -->
+    <LinearLayout
+        android:id="@+id/emptyState"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/spacing_xxl"
+        android:visibility="gone"
+        android:background="?android:colorBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[Skills]"
+            android:textSize="@dimen/text_emoji_huge"
+            android:layout_marginBottom="@dimen/spacing_lg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No skills yet"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="@dimen/text_xl"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Skills are reusable automations you can trigger by voice.\n\nExamples:\n- &quot;Summon Spotify and play focus music&quot;\n- &quot;Read my last unread message&quot;\n- &quot;Take a screenshot and describe it&quot;"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="@dimen/text_body"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:fontFamily="sans-serif" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fabCreateSkill"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/touch_large"
+            android:text="Create Your First Skill with AI ->"
+            android:textSize="@dimen/text_md"
+            android:layout_marginTop="@dimen/spacing_lg"
+            app:backgroundTint="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
+            app:cornerRadius="@dimen/radius_lg"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            app:icon="@android:drawable/ic_input_add"
+            app:iconTint="?attr/colorOnPrimary"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/spacing_sm" />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

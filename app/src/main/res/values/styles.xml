@@ -1,0 +1,16 @@
+<resources>
+    <!-- Legacy Theme (deprecated - use Theme.AutoPhone in themes.xml) -->
+    <style name="Theme.Universal" parent="Theme.AutoPhone">
+    </style>
+
+    <!-- Toolbar -->
+    <style name="ToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Dialog (legacy alias) -->
+    <style name="MaterialAlertDialog" parent="AutoPhone.Dialog">
+    </style>
+</resources>

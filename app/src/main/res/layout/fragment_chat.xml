@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <!-- Chat message list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/spacing_xs"
+        android:paddingBottom="@dimen/input_bar_height"
+        android:scrollbars="none"
+        android:layoutAnimation="@anim/layout_staggered_bottom"
+        tools:listitem="@layout/item_chat_agent" />
+
+    <!-- Input panel anchored to bottom -->
+    <LinearLayout
+        android:id="@+id/inputPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="?attr/colorSurfaceVariant"
+        android:elevation="@dimen/elevation_md"
+        android:paddingStart="@dimen/spacing_sm"
+        android:paddingEnd="@dimen/spacing_sm"
+        android:paddingTop="@dimen/spacing_xs"
+        android:paddingBottom="@dimen/spacing_sm">
+
+        <!-- Quick command chips -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/spacing_sm"
+            android:paddingTop="@dimen/spacing_sm"
+            android:paddingBottom="@dimen/spacing_xs"
+            android:scrollbars="none">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/quickChips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleLine="true"
+                app:selectionRequired="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipOpenApp"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Open App"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:chipBackgroundColor="@color/surface0"
+                    app:chipStrokeColor="@color/surface2"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="@dimen/radius_pill" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSearch"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:chipBackgroundColor="@color/surface0"
+                    app:chipStrokeColor="@color/surface2"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="@dimen/radius_pill" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSchedule"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Schedule"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:chipBackgroundColor="@color/surface0"
+                    app:chipStrokeColor="@color/surface2"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="@dimen/radius_pill" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipBattery"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Battery"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:chipBackgroundColor="@color/surface0"
+                    app:chipStrokeColor="@color/surface2"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="@dimen/radius_pill" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFlashlight"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Light"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:chipBackgroundColor="@color/surface0"
+                    app:chipStrokeColor="@color/surface2"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="@dimen/radius_pill" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSkills"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[Skills] Skills"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:chipBackgroundColor="@color/surface0"
+                    app:chipStrokeColor="@color/surface2"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="@dimen/radius_pill" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+        <!-- Text input row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/spacing_md"
+            android:paddingBottom="@dimen/spacing_md">
+
+            <!-- Voice input button -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/microphoneButton"
+                android:layout_width="@dimen/touch_large"
+                android:layout_height="@dimen/touch_large"
+                android:layout_marginEnd="@dimen/spacing_sm"
+                android:src="@drawable/ic_mic"
+                android:contentDescription="Voice input"
+                app:backgroundTint="@color/surface1"
+                app:tint="@color/text"
+                app:fabSize="mini"
+                app:elevation="@dimen/elevation_sm"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:minHeight="@dimen/touch_min"
+                android:minWidth="@dimen/touch_min" />
+
+            <!-- Text input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/commandInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/spacing_md"
+                style="@style/SuperPowers.Input.Chat"
+                app:boxBackgroundColor="@color/surface0"
+                app:startIconDrawable="@drawable/ic_edit"
+                app:startIconTint="@color/overlay1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/commandInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ask anything..."
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@color/text"
+                    android:textColorHint="@color/overlay0"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLines="4"
+                    android:imeOptions="actionSend"
+                    android:background="@android:color/transparent"
+                    android:padding="@dimen/spacing_sm" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Send button -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/runCommandButton"
+                android:layout_width="@dimen/touch_large"
+                android:layout_height="@dimen/touch_large"
+                android:src="@drawable/ic_play"
+                android:contentDescription="Send"
+                app:backgroundTint="@color/primary"
+                app:tint="?attr/colorOnPrimary"
+                app:fabSize="mini"
+                app:elevation="@dimen/elevation_sm"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:minHeight="@dimen/touch_min"
+                android:minWidth="@dimen/touch_min" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,232 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- THEMES: Dark (default) ─────────────────────────────────────────────── -->
+
+    <style name="Theme.AutoPhone" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Primary -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorOnPrimary">@color/crust</item>
+        <item name="colorPrimaryContainer">@color/surface1</item>
+        <item name="colorOnPrimaryContainer">@color/text</item>
+        <!-- Secondary -->
+        <item name="colorSecondary">@color/mauve</item>
+        <item name="colorTertiary">@color/green</item>
+        <!-- Surface -->
+        <item name="colorSurface">@color/surface0</item>
+        <item name="colorOnSurface">@color/text</item>
+        <item name="colorSurfaceVariant">@color/surface1</item>
+        <item name="colorOnSurfaceVariant">@color/subtext1</item>
+        <item name="colorOutline">@color/surface2</item>
+        <!-- Error -->
+        <item name="colorError">@color/red</item>
+        <item name="colorOnError">@color/crust</item>
+        <!-- Background -->
+        <item name="android:colorBackground">@color/base</item>
+        <item name="android:windowBackground">@color/base</item>
+        <!-- Status -->
+        <item name="android:statusBarColor">@color/mantle</item>
+        <item name="android:navigationBarColor">@color/mantle</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <!-- Dialogs -->
+        <item name="materialAlertDialogTheme">@style/AutoPhone.Dialog</item>
+        <item name="bottomSheetDialogTheme">@style/AutoPhone.BottomSheet</item>
+    </style>
+
+    <!-- Legacy aliases -->
+    <style name="Theme.MyApplication" parent="Theme.AutoPhone" />
+    <style name="Base.Theme.MyApplication" parent="Theme.AutoPhone" />
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- THEME: Light ─────────────────────────────────────────────────────── -->
+
+    <style name="Theme.AutoPhone.Light" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">#1976D2</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#BBDEFB</item>
+        <item name="colorOnPrimaryContainer">#0D47A1</item>
+        <item name="colorSecondary">#7B1FA2</item>
+        <item name="colorTertiary">#388E3C</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#1C1C1E</item>
+        <item name="colorSurfaceVariant">#F5F5F5</item>
+        <item name="colorOnSurfaceVariant">#666666</item>
+        <item name="colorOutline">#BDBDBD</item>
+        <item name="colorError">#D32F2F</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="android:colorBackground">#FAFAFA</item>
+        <item name="android:windowBackground">#FAFAFA</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="materialAlertDialogTheme">@style/AutoPhone.Dialog.Light</item>
+        <item name="bottomSheetDialogTheme">@style/AutoPhone.BottomSheet.Light</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- THEME: AMOLED ─────────────────────────────────────────────────── -->
+
+    <style name="Theme.AutoPhone.Amoled" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorSurface">#0D0D0D</item>
+        <item name="colorOnSurface">@color/text</item>
+        <item name="colorSurfaceVariant">#1A1A1A</item>
+        <item name="colorOnSurfaceVariant">@color/subtext1</item>
+        <item name="android:colorBackground">#000000</item>
+        <item name="android:windowBackground">#000000</item>
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:navigationBarColor">#000000</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- DIALOGS ─────────────────────────────────────────────────────────── -->
+
+    <style name="AutoPhone.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/surface0</item>
+        <item name="colorOnSurface">@color/text</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
+    <style name="AutoPhone.Dialog.Light" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#1C1C1E</item>
+        <item name="colorPrimary">#1976D2</item>
+    </style>
+
+    <style name="AutoPhone.DialogShape" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Bottom Sheet -->
+    <style name="AutoPhone.BottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AutoPhone.BottomSheetModal</item>
+    </style>
+    <style name="AutoPhone.BottomSheetModal" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">@color/surface0</item>
+    </style>
+    <style name="AutoPhone.BottomSheet.Light" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AutoPhone.BottomSheetModal.Light</item>
+    </style>
+    <style name="AutoPhone.BottomSheetModal.Light" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">#FFFFFF</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- WIDGET STYLES: Buttons ──────���─��────────────────────────────────────── -->
+
+    <style name="SuperPowers.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="cornerRadius">@dimen/radius_md</item>
+        <item name="android:minHeight">@dimen/touch_min</item>
+    </style>
+
+    <style name="SuperPowers.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="cornerRadius">@dimen/radius_md</item>
+    </style>
+
+    <style name="SuperPowers.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="SuperPowers.FAB" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="tint">?attr/colorOnPrimary</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- WIDGET STYLES: Cards ──────────────────────────────────────────────── -->
+
+    <style name="SuperPowers.Card.Chat" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">@dimen/radius_lg</item>
+        <item name="cardElevation">@dimen/elevation_sm</item>
+    </style>
+
+    <style name="SuperPowers.Card.Chat.Agent" parent="SuperPowers.Card.Chat">
+        <item name="cardBackgroundColor">?attr/colorSurfaceVariant</item>
+    </style>
+
+    <style name="SuperPowers.Card.Chat.User" parent="SuperPowers.Card.Chat">
+        <item name="cardBackgroundColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="SuperPowers.Card.Code" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardCornerRadius">@dimen/radius_md</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- WIDGET STYLES: Inputs ──────────────────────────────────────────────── -->
+
+    <style name="SuperPowers.Input" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/radius_lg</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_lg</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_lg</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_lg</item>
+        <item name="boxStrokeColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="SuperPowers.Input.Filled" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="boxCornerRadiusTopStart">@dimen/radius_lg</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_lg</item>
+        <item name="boxBackgroundColor">?attr/colorSurfaceVariant</item>
+    </style>
+
+    <style name="SuperPowers.Input.Chat" parent="SuperPowers.Input.Filled">
+        <item name="boxCornerRadiusTopStart">@dimen/radius_pill</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_pill</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_pill</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_pill</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- TEXT APPEARANCES ──────────────────────────────────────────────── -->
+
+    <style name="TextAppearance.SuperPowers.Headline" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.SuperPowers.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.SuperPowers.Body" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.SuperPowers.Body.Muted" parent="TextAppearance.SuperPowers.Body">
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <style name="TextAppearance.SuperPowers.Code" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.SuperPowers.Label" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <style name="TextAppearance.SuperPowers.Caption" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textColor">?attr/colorOutline</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════════ -->
+    <!-- NAVIGATION ─────────────────────────────────────────────────────────── -->
+
+    <style name="SuperPowers.NavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:background">?attr/colorSurfaceVariant</item>
+        <item name="itemIconTint">?attr/colorPrimary</item>
+        <item name="itemTextColor">?attr/colorPrimary</item>
+    </style>
+
+</resources>

@@ -1,0 +1,116 @@
+
+var twitterMsg = "Starting account loop for Twitter";
+logWarning("MainActivity", twitterMsg);
+speakText(twitterMsg);
+
+launchTwitter();
+delay(10000);
+simulateClick(60, 120);
+
+takeScreenshotAndUploadToLogs("rohan@cheatlayer,com", "UserLogs");
+delay(1000);
+
+// After completing the first set of operations, set isFirstIteration to false
+// Note: This would need to be handled in the wrapper since we can't access Kotlin variables directly
+speakText("First iteration completed, turning off agent account checking for subsequent iterations");
+
+// 2) Handle Twitter from index=2..6
+for (var i = 2; i <= 6; i++) {
+    var twitterIterMsg = "Processing Twitter account iteration " + i;
+    speakText(twitterIterMsg);
+    if (isTextPresentOnScreen("Subscribe")) {
+        simulateClick(50, 140);
+        delay(5000);
+    }
+    delay(1000);
+    simulateClick(60, 120);
+    
+    clickNodesByContentDescription("Got it");
+    
+    doOpenAccountListSequenceTwitter();
+    clickNodesByContentDescription("Got it");
+    
+    delay(1000);
+    // Note: findNodeWithAtSymbol would need to be implemented in the wrapper
+    var buttonNode3 = findNodeByClassNameAndIndex("android.widget.TextView", i); // Simplified
+    if (buttonNode3 != null) {
+        performNodeClick(buttonNode3);
+        var clickNodeMsg = "Clicked node " + i;
+        logWarning("MainActivity", clickNodeMsg);
+        speakText(clickNodeMsg);
+    }
+    
+    delay(5000);
+    if (buttonNode3 != null) {
+        var contDesc = "";
+        if (buttonNode3.text) {
+            contDesc = buttonNode3.text.toString().replace("@", "");
+        }
+        var contDescMsg = "contentDescription = " + contDesc;
+        logWarning("MainActivity", contDescMsg);
+        speakText(contDescMsg);
+        
+        if (contDesc != "" && contDesc != "Add account") {
+            var agentMap = fetchAgentAccountsTwitter();
+		var replacedemail = replaceAll(contDesc, ".", ",");
+
+            var email = agentMap[replacedemail];
+            checkAgentAccountsTwitter(replacedemail);
+            clickNodesByContentDescription("Got it");
+            var serverMap = fetchAgentServerTwitter();
+            server = serverMap[replacedemail];
+            if (server == null) {
+                server = serverMap[contDesc];
+            }
+            
+            if (email != null && server != null) {
+                var fetchVideoMsg = "Fetching video for Twitter account " + email + " server " + server;
+                speakText(fetchVideoMsg);
+                var videoResult = fetchTodaysVideoSync(email, server);
+                var key = videoResult[0];
+                var video = videoResult[1];
+                if (video != null && video.filename != null && video.filename != "") {
+                    var downloadMsg = "Downloading Twitter video " + video.filename;
+                    speakText(downloadMsg);
+                    var localFile = downloadVideo(video.video_url || "", video.filename);
+                    if (localFile != null) {
+                        var caption = (video.affiliate_link || "") + " " + (video.caption || "");
+                        var uploadMsg = "Uploading to Twitter: " + caption;
+                        speakText(uploadMsg);
+                        doFullUploadSequenceTwitter(caption, email, server);
+                        takeScreenshotAndUploadToLogs(email, "Twitter: " + caption, server);
+
+                        // DELETE file after Twitter post
+                        clickNodesByContentDescription("Got it");
+                        if (localFile && localFile.delete) {
+                            localFile.delete();
+                        }
+                        speakText("Deleted Twitter video file");
+                    } else {
+                        var failMsg = "Failed to download video for " + email;
+                        logWarning("MainActivity", failMsg);
+                        speakText(failMsg);
+                    }
+                    var markMsg = "Marking video as posted for Twitter account " + email;
+                    speakText(markMsg);
+                    markVideoAsPosted(email, key);
+                    clickNodesByContentDescription("Got it");
+                    
+                } else {
+                    var noVideoMsg = "No unposted video or filename for Twitter account " + email;
+                    logWarning("MainActivity", noVideoMsg);
+                    speakText(noVideoMsg);
+                }
+            } else {
+                var noEmailMsg = "No mapped email for Twitter username: " + contDesc;
+                logWarning("MainActivity", noEmailMsg);
+                speakText(noEmailMsg);
+            }
+            delay(5000);
+            clickNodesByContentDescription("Got it");
+            
+            simulateClick(660, 1450);
+            delay(5000);
+        }
+    }
+}

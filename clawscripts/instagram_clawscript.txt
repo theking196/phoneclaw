@@ -1,0 +1,23 @@
+
+                        // -- Then Instagram
+                        speakText("Launching Instagram");
+                        launchInstagram();
+                        delay(500);
+clickElementByViewId("com.instagram.android:id/creation_tab")  
+
+                        delay(5000);
+                        delay(5000);
+                        simulateClick(143, 620);
+                        delay(5000);
+                        clickNodesByContentDescription("Next");
+                        delay(5000);
+                        simulateClick(632, 425);
+                        delay(5000);
+                        clickNodesByContentDescription("Next");
+                        delay(5000);
+                        speakText("Taking Instagram screenshot and typing caption");
+                        simulateType("com.instagram.android:id/caption_input_text_view", video.caption || "");
+                        delay(5000);
+                        clickNodesByContentDescription("Share");
+                        delay(5000);
+                        

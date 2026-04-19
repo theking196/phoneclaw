@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tab_chat"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/tab_chat" />
+
+    <item
+        android:id="@+id/tab_tasks"
+        android:icon="@drawable/ic_tasks"
+        android:title="@string/tab_tasks" />
+
+    <item
+        android:id="@+id/tab_library"
+        android:icon="@drawable/ic_skills"
+        android:title="Library" />
+
+    <item
+        android:id="@+id/tab_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/tab_settings" />
+
+</menu>

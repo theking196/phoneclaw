@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingEnd="@dimen/spacing_xl"
+    android:paddingStart="@dimen/spacing_md"
+    android:paddingTop="@dimen/spacing_xs"
+    android:paddingBottom="@dimen/spacing_xs">
+
+    <!-- Avatar -->
+    <TextView
+        android:layout_width="@dimen/touch_large"
+        android:layout_height="@dimen/touch_large"
+        android:gravity="center"
+        android:text="🤖"
+        android:textSize="@dimen/text_lg"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Agent"
+        android:layout_marginEnd="@dimen/spacing_sm"
+        android:layout_marginTop="@dimen/spacing_2" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Thinking / Reasoning section (collapsible) -->
+        <LinearLayout
+            android:id="@+id/thinkingContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/thinkingCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface2"
+                app:cardCornerRadius="@dimen/radius_md"
+                app:cardElevation="@dimen/elevation_none"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_sm">
+
+                    <!-- Header with expand toggle -->
+                    <LinearLayout
+                        android:id="@+id/thinkingHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/spacing_xs"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🧠 Thinking"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                            android:textColor="@color/mauve" />
+
+                        <ImageView
+                            android:id="@+id/thinkingExpandIcon"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_expand_more"
+                            android:tint="@color/subtext1"
+                            android:rotation="0" />
+
+                    </LinearLayout>
+
+                    <!-- Thinking content (expandable) -->
+                    <TextView
+                        android:id="@+id/thinkingText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="@dimen/chat_bubble_max_width"
+                        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                        android:textColor="@color/subtext1"
+                        android:lineSpacingMultiplier="1.3"
+                        android:paddingStart="@dimen/spacing_sm"
+                        android:paddingEnd="@dimen/spacing_sm"
+                        android:paddingBottom="@dimen/spacing_sm"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        tools:text="I'm analyzing the user's request to open YouTube. First I need to check if the app is installed, then launch it and navigate to the search bar..." />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <!-- Main response bubble -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/messageContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/surface1"
+            app:cardCornerRadius="@dimen/radius_lg"
+            
+            
+            
+            
+            app:cardElevation="@dimen/elevation_sm"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="@dimen/spacing_sm">
+
+            <TextView
+                android:id="@+id/chatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="@dimen/chat_bubble_max_width"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@color/text"
+                android:lineSpacingMultiplier="1.3"
+                tools:text="I'm opening YouTube now and searching for AI tutorials..." />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Code block -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/codeContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:visibility="gone"
+            app:cardBackgroundColor="?attr/colorSurface"
+            
+            
+            app:cardCornerRadius="@dimen/radius_md"
+            app:cardElevation="@dimen/elevation_none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_md">
+
+                <!-- Copy button row -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+
+                    <ImageButton
+                        android:id="@+id/btnCopyCode"
+                        android:layout_width="@dimen/touch_min"
+                        android:layout_height="@dimen/touch_min"
+                        android:src="@drawable/ic_copy"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="Copy code"
+                        android:tint="@color/subtext1" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/chatCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/primary"
+                    android:lineSpacingMultiplier="1.3"
+                    tools:text="adb shell input tap 320 480" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRunCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/listPreferredItemHeight"
+                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:text="▶ Run"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    app:backgroundTint="@color/primary"
+                    android:textColor="?attr/colorOnPrimary"
+                    app:cornerRadius="@dimen/radius_sm"
+                    style="@style/Widget.Material3.Button.TextButton" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Timestamp + expand hint -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/spacing_xs">
+
+            <TextView
+                android:id="@+id/chatTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                android:textColor="@color/overlay1"
+                tools:text="12:30 PM" />
+
+            <TextView
+                android:id="@+id/expandHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" · Tap for thinking"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                android:textColor="@color/overlay0"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

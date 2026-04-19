@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@android:drawable/ic_menu_compass"
+            android:title="@string/nav_dashboard" />
+        <item
+            android:id="@+id/nav_tasks"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="@string/nav_scheduled_tasks" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@android:drawable/ic_menu_recent_history"
+            android:title="@string/nav_history" />
+    </group>
+    <item android:title="Configuration">
+        <menu>
+            <item
+                android:id="@+id/nav_ai_config"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:title="@string/nav_ai_config" />
+            <item
+                android:id="@+id/nav_model_chain"
+                android:icon="@android:drawable/ic_menu_sort_by_size"
+                android:title="@string/nav_model_chain" />
+            <item
+                android:id="@+id/nav_vision"
+                android:icon="@android:drawable/ic_menu_camera"
+                android:title="@string/nav_vision" />
+        </menu>
+    </item>
+    <item android:title="Developer">
+        <menu>
+            <item
+                android:id="@+id/nav_debug"
+                android:icon="@android:drawable/ic_menu_info_details"
+                android:title="@string/nav_debug" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:title="@string/nav_about" />
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:title="Settings" />
+        </menu>
+    </item>
+    <item android:title="Tools">
+        <menu>
+            <item android:id="@+id/nav_scripts" android:icon="@android:drawable/ic_menu_edit" android:title="Script Library" />
+            <item android:id="@+id/nav_audit" android:icon="@android:drawable/ic_menu_recent_history" android:title="Audit Log" />
+            <item android:id="@+id/nav_ollama" android:icon="@android:drawable/ic_menu_manage" android:title="Ollama (On-Device AI)" />
+            <item android:id="@+id/nav_recorder" android:icon="@android:drawable/ic_btn_speak_now" android:title="Flow Recorder" />
+            <item android:id="@+id/nav_triggers" android:icon="@android:drawable/ic_menu_agenda" android:title="Notification Triggers" />
+            <item android:id="@+id/nav_skills_plugin" android:icon="@android:drawable/ic_menu_add" android:title="Skills / Plugins" />
+            <item android:id="@+id/nav_memory" android:icon="@android:drawable/ic_menu_recent_history" android:title="Agent Memory" />
+            <item android:id="@+id/nav_clear_schedule" android:icon="@android:drawable/ic_menu_delete" android:title="Clear All Schedules" />
+        </menu>
+    </item>
+</menu>

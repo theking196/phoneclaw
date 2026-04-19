@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primitives -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Semantic: Actions ───────────────────────────────────────────── -->
+    <color name="primary">#89b4fa</color>
+    <color name="primary_variant">#74c7ec</color>
+    <color name="on_primary">#1e1e2e</color>
+
+    <!-- Semantic: Feedback ─────────────────────────────────────────── -->
+    <color name="success">#a6e3a1</color>
+    <color name="warning">#f9e2af</color>
+    <color name="error">#f38ba8</color>
+    <color name="info">#89dceb</color>
+
+    <!-- Semantic: Code ───────────────────────────────────────────────── -->
+    <color name="code_background">#181825</color>
+    <color name="code_keyword">#cba6f7</color>
+    <color name="code_string">#a6e3a1</color>
+    <color name="code_comment">#6c7086</color>
+    <color name="code_function">#89b4fa</color>
+    <!-- Catppuccin Mocha: Base ──────────────────────────────────────── -->
+    <!-- ── Catppuccin Mocha: Base ──────────────────────────────────────── -->
+    <color name="base">#1e1e2e</color>
+    <color name="mantle">#181825</color>
+    <color name="crust">#11111b</color>
+    <!-- Catppuccin: Surfaces -->
+    <color name="surface0">#313244</color>
+    <color name="surface1">#45475a</color>
+    <color name="surface2">#585b70</color>
+    <!-- Catppuccin: Overlays -->
+    <color name="overlay0">#6c7086</color>
+    <color name="overlay1">#7f849c</color>
+    <color name="overlay2">#9399b2</color>
+    <!-- Catppuccin: Text -->
+    <color name="text">#cdd6f4</color>
+    <color name="subtext0">#a6adc8</color>
+    <color name="subtext1">#bac2de</color>
+    <color name="sapphire">#74c7ec</color>
+    <color name="blue">#89b4fa</color>
+    <color name="green">#a6e3a1</color>
+    <color name="red">#f38ba8</color>
+    <color name="yellow">#f9e2af</color>
+    <color name="mauve">#cba6f7</color>
+    <color name="peach">#fab387</color>
+    <color name="teal">#94e2d5</color>
+    <color name="sky">#89dceb</color>
+    <color name="lavender">#b4befe</color>
+    <color name="pink">#f5c2e7</color>
+    <color name="maroon">#eba0ac</color>
+    <color name="flamingo">#f2cdcd</color>
+    <color name="rosewater">#f5e0dc</color>
+</resources>

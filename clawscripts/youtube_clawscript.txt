@@ -1,0 +1,139 @@
+function logAndSpeak(tag, msg, isWarning) {
+    if (isWarning) {
+        logWarning(tag, msg);
+    } else {
+        logInfo(tag, msg);
+    }
+    speakText(msg);
+}
+
+// YouTube processing loop
+for (var i = 0; i <= 6; i++) {
+    var iterMsg = "Processing YouTube account iteration " + i;
+    logAndSpeak("MainActivity", iterMsg, false);
+
+    launchYouTube();
+    delay(1000);
+    doOpenAccountListSequenceYoutube();
+    delay(5000);
+
+    var nodeIndex = 5 + i * 2;
+    logAndSpeak("MainActivity", "Chosen node " + nodeIndex, true);
+
+    var buttonNode = findNodeByClassNameAndIndex("android.widget.RelativeLayout", nodeIndex);
+    var buttonDesc = buttonNode ? buttonNode.contentDescription : null;
+    logAndSpeak("MainActivity", "Chosen node " + buttonDesc, true);
+
+    var previousNodeContentDescription = null;
+
+    if (buttonNode != null) {
+        // Attempt to get the node above it
+        var parentNode = buttonNode.parent;
+        if (parentNode != null) {
+            var childCount = parentNode.childCount;
+            var buttonIndex = -1;
+
+            for (var idx = 0; idx < childCount; idx++) {
+                if (parentNode.getChild(idx) == buttonNode) {
+                    buttonIndex = idx;
+                    break;
+                }
+            }
+
+            if (buttonIndex > 0) {
+                var nodeAbove = parentNode.getChild(buttonIndex - 1);
+                previousNodeContentDescription = nodeAbove && nodeAbove.contentDescription
+                    ? nodeAbove.contentDescription.toString()
+                    : null;
+            }
+        }
+
+        performNodeClick(buttonNode);
+        logAndSpeak("MainActivity", "Clicked node " + nodeIndex, true);
+    }
+
+    delay(5000);
+
+    simulateClick(660, 1480);
+    delay(10000);
+
+    previousNodeContentDescription = getContentDescriptionForNodeContaining("@");
+    logAndSpeak(
+        "MainActivity",
+        "PREVIOUS node text: " + previousNodeContentDescription,
+        true
+    );
+
+    var agentMap = fetchAgentAccountsYoutube();
+
+    var replacedEmail = null;
+    var email = null;
+
+    if (previousNodeContentDescription) {
+        replacedEmail = replaceAll(previousNodeContentDescription, ".", ",");
+        email = agentMap[replacedEmail];
+        checkAgentAccountsYoutube(replacedEmail);
+    } else {
+        email = "rohan@cheatlayer,com";
+    }
+
+    logAndSpeak("MainActivity", "Resolved email: " + email, true);
+
+    var serverMap = fetchAgentServerYoutube();
+    var server = serverMap[replacedEmail];
+    if (server == null && previousNodeContentDescription) {
+        server = serverMap[previousNodeContentDescription];
+    }
+
+    delay(5000);
+
+    if (email != null && server != null) {
+        logAndSpeak(
+            "MainActivity",
+            "Fetching video for " + email + " on server " + server,
+            false
+        );
+
+        var fetchEmail = replaceAll(email, ".", ",");
+        var videoResult = fetchTodaysVideoSync(fetchEmail, server);
+        var key = videoResult[0];
+        var video = videoResult[1];
+
+        if (video != null && video.filename != null && video.filename != "") {
+            logAndSpeak("MainActivity", "Downloading video " + video.filename, false);
+
+            var localFile = downloadVideo(video.video_url || "", video.filename);
+            if (localFile != null) {
+                var caption = (video.affiliate_link || "") + " " + (video.caption || "");
+                logAndSpeak(
+                    "MainActivity",
+                    "Uploading video to YouTube with caption: " + caption,
+                    false
+                );
+
+                doFullUploadSequenceYoutube(caption, email, server);
+                takeScreenshotAndUploadToLogs(email, "Youtube: " + caption, server);
+
+                if (localFile && localFile.delete) {
+                    localFile.delete();
+                }
+                speakText("Deleted local video file");
+            } else {
+                logAndSpeak("MainActivity", "Failed to download video for " + email, true);
+            }
+
+            speakText("Marking video as posted for " + email + " key " + key);
+            markVideoAsPosted(email, key);
+        } else {
+            logAndSpeak("MainActivity", "No unposted video or filename for " + email, true);
+        }
+
+        delay(5000);
+    } else {
+        logAndSpeak(
+            "MainActivity",
+            "No mapped email for username: " + email + " " + previousNodeContentDescription,
+            true
+        );
+    }
+}
