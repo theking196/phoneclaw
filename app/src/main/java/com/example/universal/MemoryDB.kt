@@ -41,7 +41,7 @@ class MemoryDB(ctx: Context) : SQLiteOpenHelper(ctx, MEMORY_DB, null, VER) {
         """
         
         // Table: facts (learned info)
-        private const val T FACTS = """
+        private const val T_FACTS = """
             CREATE TABLE facts (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 fact TEXT NOT NULL,
@@ -211,7 +211,7 @@ class MemoryDB(ctx: Context) : SQLiteOpenHelper(ctx, MEMORY_DB, null, VER) {
         val recent = getRecentInteractions(limit)
         if (recent.isEmpty()) return ""
         
-        return recent.joinToString("\n") { interaction ->
+        return recent.joinToString("\n") {
             "User: ${it.userInput}\nAI: ${it.aiResponse}\nCode: ${it.generatedCode.take(100)}"
         }
     }
