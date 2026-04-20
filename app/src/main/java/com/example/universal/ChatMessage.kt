@@ -3,6 +3,7 @@ package com.example.universal
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -32,14 +33,16 @@ class ChatAdapter(
         private const val VIEW_THINKING = 2
         private const val VIEW_SYSTEM = 3
         private const val VIEW_ERROR  = 4
+        private const val VIEW_USER_INPUT = 5
     }
 
     override fun getItemViewType(position: Int) = when (messages[position].type) {
-        MessageType.USER   -> VIEW_USER
-        MessageType.AGENT  -> VIEW_AGENT
-        MessageType.THINKING -> VIEW_THINKING
-        MessageType.SYSTEM -> VIEW_SYSTEM
-        MessageType.ERROR  -> VIEW_ERROR
+        MessageType.USER        -> VIEW_USER
+        MessageType.AGENT       -> VIEW_AGENT
+        MessageType.THINKING    -> VIEW_THINKING
+        MessageType.SYSTEM      -> VIEW_SYSTEM
+        MessageType.ERROR       -> VIEW_ERROR
+        MessageType.USER_INPUT  -> VIEW_USER_INPUT
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
