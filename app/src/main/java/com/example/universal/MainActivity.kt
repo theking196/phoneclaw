@@ -8029,4 +8029,34 @@ Generate JavaScript automation code for the user's command:
             }
         } catch (e: Exception) { /* ignore */ }
     }
+
+    override fun onResume() {
+        super.onResume()
+        if (::chatRecyclerView.isInitialized) {
+            tryReInitChatButtons()
+        }
+    }
+
+    private fun tryReInitChatButtons() {
+        try {
+            if (runCommandButton == null) {
+                currentFragment?.view
+                    ?.findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.runCommandButton)
+                    ?.setOnClickListener { sendCommand() }
+            }
+            if (commandInput == null) {
+                currentFragment?.view
+                    ?.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.commandInput)
+                    ?.setOnEditorActionListener { _, _, _ ->
+                        sendCommand()
+                        true
+                    }
+            }
+        } catch (_: Exception) { }
+    }
+
+    private fun canExecuteTool(tool: String): Boolean {
+        return true
+    }
 }
+} 
