@@ -72,8 +72,15 @@
                         android:paddingStart="@dimen/spacing_md"
                         android:clipToPadding="false" />
 
-                    <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
+                    <!-- LLM Settings Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/openLLMSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="AI Model Settings"
+                        android:layout_marginTop="@dimen/spacing_lg" />
+
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <!-- AI Configuration section -->
@@ -127,8 +134,7 @@
                         android:textColor="?attr/colorOnPrimary"
                         app:cornerRadius="@dimen/radius_md" />
 
-                    <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Behaviour section -->
@@ -184,15 +190,15 @@
                                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
                                 android:textColor="?attr/colorOnSurfaceVariant"
                                 android:layout_marginTop="@dimen/spacing_xs" />
-                            <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
+
+                        </LinearLayout>
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/sandboxSwitch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-                        <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
+
+                    </LinearLayout>
 
                     <!-- Agent loop switch -->
                     <LinearLayout
@@ -222,15 +228,15 @@
                                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
                                 android:textColor="?attr/colorOnSurfaceVariant"
                                 android:layout_marginTop="@dimen/spacing_xs" />
-                            <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
+
+                        </LinearLayout>
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/agentLoopSwitch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-                        <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
+
+                    </LinearLayout>
 
                     <!-- Ollama switch -->
                     <LinearLayout
@@ -255,27 +261,25 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Use local Ollama instead of cloud AI\n(faster, private, requires Ollama app)"
+                                android:text="Use local Ollama instead of cloud AI&#10;(faster, private, requires Ollama app)"
                                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
                                 android:textColor="?attr/colorOnSurfaceVariant"
                                 android:layout_marginTop="@dimen/spacing_xs"
                                 android:lineSpacingMultiplier="1.3" />
-                            <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
+
+                        </LinearLayout>
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/ollamaSwitch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-                        <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
 
-                    <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
-</LinearLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-    <!-- LLM Settings Button -->n    <com.google.android.material.button.MaterialButtonn        android:id="@+id/openLLMSettings"n        android:layout_width="match_parent"n        android:layout_height="wrap_content"n        android:text="AI Model Settings"n        android:layout_marginTop="@dimen/spacing_lg" />n
+
 </LinearLayout>
