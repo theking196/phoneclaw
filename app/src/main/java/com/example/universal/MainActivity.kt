@@ -8003,37 +8003,18 @@ Generate JavaScript automation code for the user's command:
             }
             .show()
     }
-}
-
-
-    override fun onResume() {
-        super.onResume()
-        // Re-init chat elements when returning from other tabs
-        if (::chatRecyclerView.isInitialized && chatRecyclerView != null) {
-            tryReInitChatButtons()
-        }
-    }
-
-    private fun tryReInitChatButtons() {
-        try {
-            // Find views again to handle edge cases
-            if (runCommandButton == null) {
-                currentFragment?.view?.findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.runCommandButton)?.let {
-                    it.setOnClickListener { sendCommand() }
-                }
-            }
-            if (commandInput == null) {
-                currentFragment?.view?.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.commandInput)?.let {
-                    it.setOnEditorActionListener { _, _, _ -> sendCommand(); true }
-                }
-            }
-        } catch (e: Exception) { /* ignore */ }
-    }
-
     override fun onResume() {
         super.onResume()
         if (::chatRecyclerView.isInitialized) {
             tryReInitChatButtons()
+        }
+    }
+
+    private fun sendCommand() {
+        val text = commandInput?.text?.toString()?.trim() ?: ""
+        if (text.isNotEmpty()) {
+            commandInput?.setText("")
+            processVoiceCommand(text)
         }
     }
 
@@ -8059,4 +8040,3 @@ Generate JavaScript automation code for the user's command:
         return true
     }
 }
-} 
