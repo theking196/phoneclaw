@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/spacing_md"
-            android:src="@drawable/ic_add"
+            android:src="@android:drawable/ic_input_add"
             android:contentDescription="Add scheduled task" />
     </FrameLayout>
 </LinearLayout>
