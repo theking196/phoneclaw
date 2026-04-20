@@ -81,7 +81,9 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        <activity android:name=".LLMSettingsActivity" /></activity>
+        </activity>
+
+        <activity android:name=".LLMSettingsActivity" />
 
         <activity
             android:name="com.example.universal.MainActivity"
