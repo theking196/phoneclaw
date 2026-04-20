@@ -45,4 +45,8 @@
     <string name="previous">Previous</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="widget_description">Quick access to PhoneClaw - Voice, Chat, Skills</string>
+
+    <string name="tab_chat">Chat</string>
+    <string name="tab_settings">Settings</string>
+
 </resources>
