@@ -105,12 +105,12 @@ class AndroidAutoHelper(private val context: Context) {
 
     private fun extractLocation(text: String): String {
         // Simple extraction - after "to" or "navigate to"
-        return text.replace(Regex(".*to\\s+", ""), "").trim()
+        return text.replace(Regex(".*to\\s+"), "").trim()
     }
 
     private fun extractContact(text: String): String {
         // Simple extraction - after "call" or "text"
-        return text.replace(Regex(".*(call|text)\\s+", ""), "").trim()
+        return text.replace(Regex(".*(call|text)\\s+"), "").trim()
     }
 }
 
