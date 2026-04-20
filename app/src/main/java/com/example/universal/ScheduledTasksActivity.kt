@@ -2,11 +2,14 @@ package com.example.universal
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ScheduledTasksActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,8 +60,6 @@ class ScheduledTasksActivity : AppCompatActivity() {
             holder.status.text = if (item.isActive) "✅ Active" else "⏸ Paused"
         }
     }
-}
-
 
     private fun showAddTaskDialog() {
         val layout = LinearLayout(this).apply {
@@ -87,9 +88,11 @@ class ScheduledTasksActivity : AppCompatActivity() {
     }
     
     private fun addTask(description: String, cron: String) {
-        // Save task - implement persistence
+        // Save task
+        val prefs = getSharedPreferences("tasks", MODE_PRIVATE)
         prefs.edit().putString("task_${System.currentTimeMillis()}", "$description|$cron").apply()
         Toast.makeText(this, "Task saved!", Toast.LENGTH_SHORT).show()
-        loadTasks()
+        recreate()
     }
+}
 
