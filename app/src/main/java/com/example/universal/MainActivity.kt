@@ -8030,37 +8030,3 @@ Generate JavaScript automation code for the user's command:
         } catch (e: Exception) { /* ignore */ }
     }
 }
-
-
-    // === SHAKE DETECTION ===
-    private var sensorManager: android.hardware.SensorManager? = null
-    private var lastShake = 0L
-    
-    private fun setupShakeToActivate() {
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as android.hardware.SensorManager
-        sensorManager?.getDefaultSensor(android.hardware.Sensor.TYPE_ACCELEROMETER)?.let { accelerometer ->
-            sensorManager?.registerListener(object : android.hardware.SensorEventListener {
-                override fun onSensorChanged(event: SensorEvent) {
-                    val x = event.values[0]
-                    val y = event.values[1]
-                    val z = event.values[2]
-                    val acc = kotlin.math.sqrt((x*x + y*y + z*z).toDouble()) - 9.8
-                    
-                    if (acc > 15) { // Shake threshold
-                        val now = System.currentTimeMillis()
-                        if (now - lastShake > 2000) { // Debounce 2 seconds
-                            lastShake = now
-                            onShakeDetected()
-                        }
-                    }
-                }
-                override fun onAccuracyChanged(sensor: android.hardware.Sensor?, accuracy: Int) {}
-            }, accelerometer, android.hardware.SensorManager.SENSOR_DELAY_NORMAL)
-        }
-    }
-    
-    private fun onShakeDetected() {
-        // Show voice input dialog
-        startVoiceInput()
-    }
-
