@@ -13,83 +13,85 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ToolsFragment : Fragment() {
 
-    // Tool definitions with descriptions and examples
     private val tools = listOf(
         ToolInfo("magicClicker", "Click a UI element by description",
-            "Click 'Create account' button", 
+            "Click 'Create account' button",
             "Click the 'Send' button in the chat"),
-        
+
         ToolInfo("magicScraper", "Read text from screen",
-            "Read the OTP code from SMS", 
+            "Read the OTP code from SMS",
             "Get the price shown on the screen"),
-        
+
         ToolInfo("speakText", "Text-to-speech output",
-            "speakText('Hello!')", 
+            "speakText('Hello!')",
             "Speak the current battery level"),
-        
+
         ToolInfo("delay", "Wait for milliseconds",
-            "delay(1000) // wait 1 second", 
+            "delay(1000) // wait 1 second",
             "delay(500) // half second"),
-        
+
         ToolInfo("clickElementByViewId", "Click by View ID",
-            "clickElementByViewId('com.example:id/btnSend')", 
+            "clickElementByViewId('com.example:id/btnSend')",
             "Click button with ID 'send'"),
-        
+
         ToolInfo("clickElementByArea", "Click by screen coordinates",
-            "clickElementByArea(320, 480)", 
+            "clickElementByArea(320, 480)",
             "Tap center of screen"),
-        
+
         ToolInfo("swipeUp", "Swipe up on screen",
-            "swipeUp()", 
+            "swipeUp()",
             "Scroll down by swiping up"),
-        
-        ToolInfo("swipeDown", "Swipe down on screen", 
-            "swipeDown()", 
+
+        ToolInfo("swipeDown", "Swipe down on screen",
+            "swipeDown()",
             "Scroll up by swiping down"),
-        
+
         ToolInfo("showToast", "Show toast message",
-            "showToast('Done!')", 
+            "showToast('Done!')",
             "Show 'Processing...' toast"),
-        
+
         ToolInfo("logMessage", "Log to debug console",
-            "logMessage('Clicked button')", 
+            "logMessage('Clicked button')",
             "Log when action completes"),
-        
+
         ToolInfo("schedule", "Schedule a task",
-            "schedule('myTask', '0 * * * *')", 
+            "schedule('myTask', '0 * * * *')",
             "Run every hour"),
-        
+
         ToolInfo("clearSchedule", "Clear all scheduled tasks",
-            "clearSchedule()", 
+            "clearSchedule()",
             "Stop all scheduled tasks"),
-        
+
         ToolInfo("httpGet", "HTTP GET request",
-            "httpGet('https://api.example.com/data')", 
+            "httpGet('https://api.example.com/data')",
             "Fetch data from URL"),
-        
-        ToolInfo("httpPost", "HTTP POST request", 
+
+        ToolInfo("httpPost", "HTTP POST request",
             "httpPost('https://api.example.com/submit', '{\"key\":\"value\"}')",
             "Send JSON data to endpoint"),
-        
+
         ToolInfo("saveToMemory", "Save to phone memory",
-            "saveToMemory('lastCode', 'my script')", 
+            "saveToMemory('lastCode', 'my script')",
             "Remember this script"),
-        
+
         ToolInfo("readFromMemory", "Read from phone memory",
-            "readFromMemory('lastCode')", 
+            "readFromMemory('lastCode')",
             "Get remembered script"),
-            
+
         ToolInfo("getScreenState", "Get current screen info",
-            "getScreenState()", 
+            "getScreenState()",
             "Returns screen package and elements"),
-            
-        ToolInfo("waitForElement", "Wait for element to appear", 
+
+        ToolInfo("waitForElement", "Wait for element to appear",
             "waitForElement('Submit', 5000)",
             "Wait up to 5s for button")
     )
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.fragment_tools, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = inflater.inflate(R.layout.fragment_tools, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         try {
@@ -110,14 +112,6 @@ class ToolsFragment : Fragment() {
         }
     }
 }
-
-data class ToolInfo(
-    val name: String,
-    val description: String,
-    val syntax: String,
-    val example: String,
-    val enabled: Boolean = true
-)
 
 class ToolsAdapter(
     private val tools: List<ToolInfo>
