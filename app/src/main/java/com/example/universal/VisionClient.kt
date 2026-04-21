@@ -21,7 +21,7 @@ class VisionClient(private val ctx: Context) {
     private val JSON = "application/json; charset=utf-8".toMediaType()
 
     suspend fun magicScraper(question: String, screenshot: Bitmap): String {
-        val apiKey = LocalStorage.getString(ctx, "moondream_api_key", "")
+        val apiKey = LocalStorage.getString(ctx.applicationContext, "moondream_api_key", "")
         if (apiKey.isBlank()) {
             return "Error: No Moondream API key configured"
         }
@@ -70,7 +70,7 @@ class VisionClient(private val ctx: Context) {
     }
 
     fun isConfigured(): Boolean {
-        return LocalStorage.getString(ctx, "moondream_api_key", "").isNotBlank()
+        return LocalStorage.getString(ctx.applicationContext, "moondream_api_key", "").isNotBlank()
     }
 
     data class Point(val x: Int, val y: Int)
