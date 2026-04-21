@@ -141,7 +141,7 @@ class SkillsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         try {
             val rv = view.findViewById<RecyclerView>(R.id.skillsRecyclerView)
-            val tabs = view.findViewById<TabLayout>(R.id.libraryTabs)
+            val tabs = view.findViewById<TabLayout>(R.id.libraryTabs)(R.id.libraryTabs)
 
             tabs.removeAllTabs()
             tabs.addTab(tabs.newTab().setText("Skills"))

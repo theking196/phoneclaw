@@ -24,7 +24,7 @@ import kotlin.math.floor
 
 import kotlinx.coroutines.*
 import kotlin.coroutines.cancellation.CancellationException
-import android.content.Context as Context
+import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import android.graphics.Bitmap
@@ -88,7 +88,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.android.material.button.MaterialButton
+import com.google.android.material.button.MaterialButton\nimport android.content.Intent
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.appcompat.widget.Toolbar
@@ -761,7 +761,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
         val currentProvider = prefs.getString("ai_provider", "OpenRouter")
         val providers = arrayOf("OpenRouter", "OpenAI", "Groq", "Scitely")
         val providerIdx = providers.indexOf(currentProvider).coerceAtLeast(0)
-        
+
         MaterialAlertDialogBuilder(this)
             .setTitle("Select AI Provider")
             .setSingleChoiceItems(providers, providerIdx) { _, which ->
@@ -772,7 +772,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             .setNegativeButton("Cancel", null)
             .show()
     }
-    
+
     private fun showAPIKeyInputDialog(provider: String) {
         val prefs = getSharedPreferences("phoneclaw_config", MODE_PRIVATE)
         val editText = android.widget.EditText(this).apply {
@@ -795,7 +795,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             .setNegativeButton("Cancel", null)
             .show()
     }
-    
+
     private fun showModelInputDialog(provider: String) {
         val prefs = getSharedPreferences("phoneclaw_config", MODE_PRIVATE)
         val defaultModel = when(provider) { "OpenRouter" -> "qwen/Qwen3-8B"; "OpenAI" -> "gpt-4o-mini"; "Groq" -> "llama-3.1-8b-instant"; "Scitely" -> "deepseek-chat"; else -> "gpt-4o-mini" }
@@ -833,7 +833,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
 
     private fun showDebugDialog() {
         val prefs = getSharedPreferences("phoneclaw_config", MODE_PRIVATE)
-        
+
         val debugInfo = buildString {
             appendLine("=== DEBUG INFO ===")
             appendLine("")
@@ -859,7 +859,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             appendLine("--- Recent Logs ---")
             appendLine((prefs.getString("debug_log", "No debug logs") ?: ""))
         }
-        
+
         val scrollView = android.widget.ScrollView(this).apply {
             layoutParams = android.view.ViewGroup.LayoutParams(
                 android.view.ViewGroup.LayoutParams.MATCH_PARENT,
@@ -873,7 +873,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             setBackgroundColor(android.graphics.Color.parseColor("#1E1E2E"))
         }
         scrollView.addView(editText)
-        
+
         MaterialAlertDialogBuilder(this)
             .setTitle("Debug Information")
             .setView(scrollView)
@@ -897,7 +897,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             hint = "Enter command to preview code"
             setText("")
         }
-        
+
         MaterialAlertDialogBuilder(this)
             .setTitle("Test Mode - Preview JS Code")
             .setView(editText)
@@ -918,7 +918,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             .setNegativeButton("Cancel", null)
             .show()
     }
-    
+
     private fun showPreviewDialog(code: String) {
         val scrollView = android.widget.ScrollView(this).apply {
             layoutParams = android.view.ViewGroup.LayoutParams(
@@ -952,37 +952,37 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             .show()
     }
 
-    private private fun canExecuteTool(tool: String): Boolean =
-    SkillsFragment.isToolEnabled(this, tool)
+    private fun canExecuteTool(tool: String): Boolean =
+    isToolEnabled(tool)
 
     // === MEMORY FUNCTIONS FOR SCRIPT ===
     private val memoryDB by lazy { MemoryDB(this) }
-    
+
     fun saveToMemory(key: String, value: String): String {
         memoryDB.remember(key, value)
         return "Saved: $key = $value"
     }
-    
+
     fun readFromMemory(key: String): String {
         return memoryDB.recall(key) ?: "Not found: $key"
     }
-    
+
     fun learnFact(fact: String, context: String = ""): String {
         memoryDB.learnFact(fact, context)
         return "Learned: $fact"
     }
-    
+
     fun searchHistory(query: String, limit: Int = 5): String {
         val results = memoryDB.searchInteractions(query, limit)
         if (results.isEmpty()) return "No results for: $query"
         return results.take(3).joinToString("\n---\n") { "${it.userInput} → ${it.aiResponse}" }
     }
-    
+
     fun getContext(limit: Int = 5): String {
         return memoryDB.getContextForAI(limit)
     }
     // ==================================
-    
+
     fun executeScript(code: String) {
         // Check if confirmation is enabled
         if (SafetyConfig.isConfirmEnabled(this)) {
@@ -993,7 +993,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             runScriptDirect(code)
         }
     }
-    
+
     private fun showConfirmRunDialog(code: String) {
         val preview = code.take(200) + if (code.length > 200) "..." else ""
         MaterialAlertDialogBuilder(this)
@@ -1004,7 +1004,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             .setNeutralButton("Save Only") { _, _ -> saveScript(code) }
             .show()
     }
-    
+
     private fun runScriptDirect(code: String) {
         CoroutineScope(Dispatchers.Main).launch {
             Toast.makeText(this@MainActivity, "Running script...", Toast.LENGTH_SHORT).show()
@@ -1033,14 +1033,14 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             hint = "Enter JavaScript code"
             setText("")
         }
-        
+
         val scrollView = android.widget.ScrollView(this).apply {
             layoutParams = android.view.ViewGroup.LayoutParams(
                 android.view.ViewGroup.LayoutParams.MATCH_PARENT,
                 400)
         }
         scrollView.addView(editText)
-        
+
         MaterialAlertDialogBuilder(this)
             .setTitle("Manual JavaScript Input")
             .setMessage("Enter JS code to execute directly")
@@ -2937,7 +2937,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
         mode: String = "fast"
     ): String = withContext(Dispatchers.IO) {
         if (isDestroyed) return@withContext ""
-        
+
         // Check if custom API is configured and redirect to BYOKClient
         if (shouldUseCustomAPI()) {
             Log.d("MainActivity", "Redirecting to BYOKClient (custom API: ${getCurrentProviderName()})")
@@ -3130,7 +3130,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             // Check if custom API is configured
             val prefs = getSharedPreferences("phoneclaw_config", MODE_PRIVATE)
             val useCustom = prefs.getBoolean("use_custom_config", false)
-            
+
             val systemPrompt = buildAutomationSystemPrompt()
             val userPrompt = "User Command: $userCommand"
 
@@ -3163,10 +3163,10 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
                 val prefs = getSharedPreferences("phoneclaw_config", MODE_PRIVATE)
                 prefs.edit().putString("last_ai_response", result?.take(1000) ?: "").apply()
             } catch(e: Exception) {}
-            
+
             if (result.isNotEmpty()) {
                 var extractedCode = extractJavaScriptCode(result)
-                
+
                 // VALIDATION: Check if code actually does something useful
                 // If only speakText with no real actions, it's BAD code - retry
                 val hasRealAction = extractedCode.contains("openApp(") || 
@@ -3175,7 +3175,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
                                    extractedCode.contains("clickBy") ||
                                    extractedCode.contains("typeInField") ||
                                    extractedCode.contains("delay(")
-                
+
                 if (!hasRealAction && extractedCode.contains("speakText")) {
                     // Bad code! Only speakText, no real actions - retry once
                     Log.w("AIResponse", "Bad code detected - only speakText, no actions. Retrying...")
@@ -3205,20 +3205,20 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             ""
         }
     }
-    
+
     // Use BYOKClient for custom API
     // Helper to check if custom API should be used
     private fun shouldUseCustomAPI(): Boolean {
         val prefs = getSharedPreferences("phoneclaw_config", MODE_PRIVATE)
         return prefs.getBoolean("use_custom_config", false) && prefs.getString("api_key", "")?.isNotEmpty() == true
     }
-    
+
     // Helper to get the provider name for logging
     private fun getCurrentProviderName(): String {
         val prefs = getSharedPreferences("phoneclaw_config", MODE_PRIVATE)
         return prefs.getString("ai_provider", "OpenRouter") ?: "OpenRouter"
     }
-    
+
     // Unified AI call function that handles both custom and default
     private suspend fun callAI(messages: List<Map<String, String>>, maxTokens: Int = 300, mode: String = "fast"): String = withContext(Dispatchers.IO) {
         if (shouldUseCustomAPI()) {
@@ -3330,15 +3330,15 @@ For complex tasks, USE SNAPSHOT to see what's on screen:
   // Step 1: Open YouTube
   openApp("com.google.android.youtube");
   delay(3000); // Wait for app to open
-  
+
   // Step 2: Click search
   clickByText("Search");
   delay(1000);
-  
+
   // Step 3: Type search query
   typeInField("Open AI");
   delay(500);
-  
+
   // Step 4: Press enter
   pressEnter();
   \`\`\`
@@ -3356,7 +3356,7 @@ For complex tasks, USE SNAPSHOT to see what's on screen:
   // Step 1: Turn on flashlight
   toggleFlashlight(true);
   delay(500);
-  
+
   // Step 2: Open Chrome
   openApp("com.android.chrome");
   delay(3000);
@@ -3612,7 +3612,7 @@ Generate JavaScript automation code for the user's command:
         // Try to find code block first
         val codeBlockRegex = "```(?:javascript|js)?\n?(.*?)```".toRegex(RegexOption.DOT_MATCHES_ALL)
         val codeBlockMatch = codeBlockRegex.find(response)
-        
+
         if (codeBlockMatch != null) {
             var code = codeBlockMatch.groupValues[1].trim()
             // Clean up common issues
@@ -3624,7 +3624,7 @@ Generate JavaScript automation code for the user's command:
         // If no code block, try to find lines that look like JS
         val lines = response.split("\n")
         val jsLines = mutableListOf<String>()
-        
+
         for (line in lines) {
             val trimmed = line.trim()
             // Skip empty lines, comments, and non-code lines
@@ -3674,11 +3674,11 @@ Generate JavaScript automation code for the user's command:
                 // Core functions
                 function speakText(text) { Android.speakText(text); }
                 function delay(ms) { Android.delay(ms); }
-                
+
                 // Scheduling functions
                 function schedule(task, cronExpression) { Android.schedule(task, cronExpression); }
                 function clearSchedule() { Android.clearSchedule(); }
-                
+
                 //Automation functions 
                 function magicClicker(description){
                 Android.magicClicker(description)
@@ -3715,7 +3715,7 @@ Generate JavaScript automation code for the user's command:
                     Android.logWarning("JavaScript", "safeInt: Unknown type for " + value);
                     return defaultVal || 0;
                 }
-                
+
                 function safeFloat(value, defaultVal) {
                     if (value == null || value === undefined) return defaultVal || 0.0;
                     if (typeof value === 'number') {
@@ -3736,7 +3736,7 @@ Generate JavaScript automation code for the user's command:
                     Android.logWarning("JavaScript", "safeFloat: Unknown type for " + value);
                     return defaultVal || 0.0;
                 }
-                
+
                 // SharedPreferences helper object
                 function getSharedPreferences(name, mode) {
                     return {
@@ -3800,51 +3800,51 @@ Generate JavaScript automation code for the user's command:
  function findNodeByClassNameAndIndex(className, index) {
                     return Android.findNodeByClassNameAndIndex(className, safeInt(index, 0));
                 }
-                
-                
-                
+
+
+
                 function performNodeClick(node) {
                     Android.performNodeClick(node);
                 }
-                
+
                 function isTextPresentOnScreen(text) {
                     return Android.isTextPresentOnScreen(text);
                 }
                    function handleTikTokStartupScreens() {
                     return Android.handleTikTokStartupScreens();
                 }
-                
+
                 function getContentDescriptionForNodeContaining(text) {
                     return Android.getContentDescriptionForNodeContaining(text);
                 }
-                
+
                 // Data fetching functions handleTikTokStartupScreens
-                
+
                 // String utility functions
                 function replaceAll(str, searchValue, replaceValue) {
                     return Android.replaceAll(str, searchValue, replaceValue);
                 }
-                
-                
-                
+
+
+
 
 
                 function launchInstagram() {
                     Android.launchInstagram();
                 }
-                
+
                 function fetchTodaysVideoSync(email, server) {
                     return Android.fetchTodaysVideoSync(email, server);
                 }
-                
+
                 function fetchBio(email, server) {
                     return Android.fetchBio(email, server);
                 }
-                
+
                 function fetchBlogPost(caption, username) {
                     return Android.fetchBlogPost(caption, username);
                 }
-                
+
                 function fetchSearch(caption, username) {
                     return Android.fetchSearch(caption, username);
                 }
@@ -3855,23 +3855,23 @@ Generate JavaScript automation code for the user's command:
                 function fetchReply(postText, username) {
                     return Android.fetchReply(postText, username);
                 }
-                
+
                 // File and upload functions
                 function downloadVideo(url, filename) {
                     return Android.downloadVideo(url, filename);
                 }
-                
+
                 function downloadProfileImage(email, server) {
                     return Android.downloadProfileImage(email, server);
                 }
-                
+
                 function downloadRandomBrandAssets(email, server) {
                     Android.downloadRandomBrandAssets(email, server);
                 }
-                
-                
-                
-                
+
+
+
+
                 function markVideoAsPosted(email, key) {
                     Android.markVideoAsPosted(email, key);
                 }
@@ -3887,23 +3887,23 @@ Generate JavaScript automation code for the user's command:
                    function split(str, delimiter) {
                     return Android.split(str, delimiter);
                 }
-                
-                
+
+
                             function clickElementByViewId(id) {
                     Android.clickElementByViewId(id);
                 }
-                
-                
-                
+
+
+
                 // Logging
                 function logInfo(tag, message) {
                     Android.logInfo(tag, message);
                 }
-                
+
                 function logWarning(tag, message) {
                     Android.logWarning(tag, message);
                 }
-                
+
                 // System settings
                 function openWiFiSettings() { Android.openWiFiSettings(); }
                 function openBluetoothSettings() { Android.openBluetoothSettings(); }
@@ -3915,7 +3915,7 @@ Generate JavaScript automation code for the user's command:
                 function openPrivacySettings() { Android.openPrivacySettings(); }
                 function openSecuritySettings() { Android.openSecuritySettings(); }
                 function openDeveloperOptions() { Android.openDeveloperOptions(); }
-                
+
                 // System controls
                 function toggleWiFi(enable) { Android.toggleWiFi(enable); }
                 function toggleBluetooth(enable) { Android.toggleBluetooth(enable); }
@@ -3927,7 +3927,7 @@ Generate JavaScript automation code for the user's command:
                 function setVolume(type, level) { Android.setVolume(type, level); }
                 function lockScreen() { Android.lockScreen(); }
                 function vibrate(ms) { Android.vibrate(ms); }
-                
+
                 // Communication
                 function makePhoneCall(number) { Android.makePhoneCall(number); }
                 function sendSMS(number, message) { Android.sendSMS(number, message); }
@@ -3936,7 +3936,7 @@ Generate JavaScript automation code for the user's command:
                 function openMessages() { Android.openMessages(); }
                 function openGmail() { Android.openGmail(); }
                 function composeEmail(to, subject, body) { Android.composeEmail(to, subject, body); }
-                
+
                 // File & Media
                 function openFileManager() { Android.openFileManager(); }
                 function openGallery() { Android.openGallery(); }
@@ -3946,7 +3946,7 @@ Generate JavaScript automation code for the user's command:
                 function playMusic(path) { Android.playMusic(path); }
                 function pauseMusic() { Android.pauseMusic(); }
                 function stopMusic() { Android.stopMusic(); }
-                
+
                 // Navigation
                 function openGoogleMaps() { Android.openGoogleMaps(); }
                 function navigateToAddress(address) { Android.navigateToAddress(address); }
@@ -3954,7 +3954,7 @@ Generate JavaScript automation code for the user's command:
                 function getCurrentLocation() { return Android.getCurrentLocation(); }
                 function openUber() { Android.openUber(); }
                 function openLyft() { Android.openLyft(); }
-                
+
                 // Hardware
                 function toggleFlashlight(enable) { Android.toggleFlashlight(enable); }
                 function openApp(packageName) { Android.openApp(packageName); }
@@ -3983,24 +3983,24 @@ Generate JavaScript automation code for the user's command:
                 function analyzeScreen() { return Android.analyzeScreen(); }
                 function isTextPresent(text) { return Android.isTextPresentOnScreen(text); }
                 function waitForElement(text, timeout) { return Android.waitForElement(text, timeout); }
-                
+
                 // Existing
                 function takeFrontCamera() { Android.takeFrontCamera(); }
                 function takeBackCamera() { Android.takeBackCamera(); }
                 function recordAudio(duration) { Android.recordAudio(duration); }
-                
+
                 // App management
                 function openPlayStore() { Android.openPlayStore(); }
                 function searchPlayStore(query) { Android.searchPlayStore(query); }
                 function openAppInfo(pkg) { Android.openAppInfo(pkg); }
                 function forceStopApp(pkg) { Android.forceStopApp(pkg); }
                 function clearAppCache(pkg) { Android.clearAppCache(pkg); }
-                
+
                 // Security
                 function generateQRCode(data) { Android.generateQRCode(data); }
                 function scanQRCode() { return Android.scanQRCode(); }
                 function enableScreenLock(type, password) { Android.enableScreenLock(type, password); }
-                
+
                 // Network
                 function connectToWiFi(ssid, password) { Android.connectToWiFi(ssid, password); }
                 function disconnectFromWiFi() { Android.disconnectFromWiFi(); }
@@ -4008,7 +4008,7 @@ Generate JavaScript automation code for the user's command:
                 function enableMobileData(enable) { Android.enableMobileData(enable); }
                 function switchToMobileData() { Android.switchToMobileData(); }
                 function switchToWiFi() { Android.switchToWiFi(); }
-                
+
                 // Accessibility & UI
                 function enableTalkBack(enable) { Android.enableTalkBack(enable); }
                 function increaseFontSize() { Android.increaseFontSize(); }
@@ -4023,7 +4023,7 @@ Generate JavaScript automation code for the user's command:
                 function swipeDown() { Android.swipeDown(); }
                 function longPress(x, y) { Android.longPress(x, y); }
                 function doubleClick(x, y) { Android.doubleClick(x, y); }
-                
+
                 // Productivity
                 function openCalendar() { Android.openCalendar(); }
                 function createEvent(title, date, time) { Android.createEvent(title, date, time); }
@@ -4033,34 +4033,34 @@ Generate JavaScript automation code for the user's command:
                 function openNotes() { Android.openNotes(); }
                 function createNote(title, content) { Android.createNote(title, content); }
                 function openGoogleDocs() { Android.openGoogleDocs(); }
-                
+
                 // Shopping & Finance
                 function openAmazon() { Android.openAmazon(); }
                 function searchProduct(query) { Android.searchProduct(query); }
                 function openBankingApp(name) { Android.openBankingApp(name); }
                 function openPaymentApp(name) { Android.openPaymentApp(name); }
-                
+
                 // Advanced automation
                 function extractTextFromImage(path) { return Android.extractTextFromImage(path); }
                 function translateText(text, lang) { return Android.translateText(text, lang); }
                 function summarizeText(text) { return Android.summarizeText(text); }
                 function generateResponse(prompt) { return Android.generateResponse(prompt); }
-                
+
                 // Device monitoring
                 function getBatteryLevel() { return Android.getBatteryLevel(); }
                 function getMemoryUsage() { return Android.getMemoryUsage(); }
                 function getStorageSpace() { return Android.getStorageSpace(); }
                 function getRunningApps() { return Android.getRunningApps(); }
                 function getInstalledApps() { return Android.getInstalledApps(); }
-                
+
                 // Context-aware
                 function analyzeCurrentScreen() { return Android.analyzeCurrentScreen(); }
                 function detectCurrentApp() { return Android.detectCurrentApp(); }
                 function getScreenText() { return Android.getScreenText(); }
                 function findClickableElements() { return Android.findClickableElements(); }
                 function suggestNextAction() { return Android.suggestNextAction(); }
-                
-                
+
+
                    function clickVideoUploadButton() {
                     Android.clickVideoUploadButton();
                 }
@@ -4070,7 +4070,7 @@ Generate JavaScript automation code for the user's command:
                    function clickAddSound() {
                     Android.clickAddSound();
                 }
-                
+
                 // Original core functions
                 function simulateClick(x, y) { Android.simulateClick(x, y); }
                 function clickNodesByContentDescription(desc) { Android.clickNodesByContentDescription(desc); }
@@ -4082,14 +4082,14 @@ Generate JavaScript automation code for the user's command:
 
                 function simulateScrollToTop() { Android.simulateScrollToTop(); }
                 function isTextPresentOnScreen(text) { return Android.isTextPresentOnScreen(text); }
-                
+
                 function simulateTypeByClass(className, text) {
                     Android.simulateTypeByClass(className, text);
                 }
                   function check2FA() {
                     Android.check2FA();
                 }
-                    
+
                 function simulateDeleteByClass(className) {
                     Android.simulateDeleteByClass(className);
                 }
@@ -7328,7 +7328,7 @@ Generate JavaScript automation code for the user's command:
             return "Screenshot saved"
         } catch (e: Exception) { return "Error" }
     }
-    
+
     @JavascriptInterface
     fun copyToClipboard(text: String) {
         try {
@@ -7336,7 +7336,7 @@ Generate JavaScript automation code for the user's command:
             clipboard.setPrimaryClip(android.content.ClipData.newPlainText("text", text))
         } catch (e: Exception) {}
     }
-    
+
     @JavascriptInterface
     fun openAppSettings(packageName: String) {
         try {
@@ -7345,7 +7345,7 @@ Generate JavaScript automation code for the user's command:
             this@MainActivity.startActivity(intent)
         } catch (e: Exception) {}
     }
-    
+
     @JavascriptInterface
     fun getIPAddress(): String {
         try {
@@ -7361,7 +7361,7 @@ Generate JavaScript automation code for the user's command:
             return "No IP"
         } catch (e: Exception) { return "Error" }
     }
-    
+
     @JavascriptInterface
     fun clearClipboard() {
         try {
@@ -7369,7 +7369,7 @@ Generate JavaScript automation code for the user's command:
             clipboard.setPrimaryClip(android.content.ClipData.newPlainText("", ""))
         } catch (e: Exception) {}
     }
-    
+
     @JavascriptInterface
     fun openFile(filePath: String) {
         try {
@@ -7380,7 +7380,7 @@ Generate JavaScript automation code for the user's command:
             this@MainActivity.startActivity(intent)
         } catch (e: Exception) {}
     }
-    
+
     @JavascriptInterface
     fun shareText(text: String) {
         try {
@@ -7391,7 +7391,7 @@ Generate JavaScript automation code for the user's command:
             this@MainActivity.startActivity(android.content.Intent.createChooser(intent, "Share"))
         } catch (e: Exception) {}
     }
-    
+
     @JavascriptInterface
     fun setScreenTimeout(seconds: Int) {
         try {
@@ -7534,7 +7534,7 @@ Generate JavaScript automation code for the user's command:
         val updatedAt: String
     )
 
-    
+
     // Stub: fetchUserPrompts - returns empty prompts (remote fetch removed)
     private suspend fun fetchUserPrompts(email: String): Pair<String?, String?> = withContext(Dispatchers.IO) {
         Log.d("MainActivity", "fetchUserPrompts: using local stub for $email")
