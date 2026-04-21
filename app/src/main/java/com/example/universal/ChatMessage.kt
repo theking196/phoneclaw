@@ -238,7 +238,7 @@ class ChatAdapter(
         fun bind(msg: ChatMessage, onReply: (String) -> Unit) {
             question.text = msg.text
             sendBtn.setOnClickListener {
-                val input = view.findViewById<android.widget.EditText>(R.id.userInput)
+                val input = itemView.findViewById<EditText>(R.id.userInput)
                 val reply = input.text.toString()
                 if (reply.isNotBlank()) onReply(reply)
             }

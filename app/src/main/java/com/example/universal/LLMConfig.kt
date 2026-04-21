@@ -10,10 +10,10 @@ object LLMConfig {
     private const val PREFS = "phoneclaw_llm"
     
     fun getProvider(ctx: Context): String = 
-        ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString("provider", "kilocode")
+        ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString("provider", "kilocode") ?: ""
     
     fun getModel(ctx: Context): String = 
-        ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString("model", "gpt-4o-mini")
+        ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString("model", "gpt-4o-mini") ?: ""
     
     fun getTemperature(ctx: Context): Float = 
         ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getFloat("temperature", 0.7f)
