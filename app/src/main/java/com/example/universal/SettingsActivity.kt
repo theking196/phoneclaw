@@ -2,7 +2,9 @@ package com.example.universal
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.\nimport com.google.android.material.button.MaterialButton\nimport android.content.Intent*
+import android.widget.*
+import com.google.android.material.button.MaterialButton
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.switchmaterial.SwitchMaterial

@@ -88,7 +88,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.android.material.button.MaterialButton\nimport android.content.Intent
+import com.google.android.material.button.MaterialButton
+import android.content.Intent
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.appcompat.widget.Toolbar
@@ -682,7 +683,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             processVoiceCommand("Toggle flashlight")
         }
         view.findViewById<com.google.android.material.chip.Chip>(R.id.chipSkills)?.setOnClickListener {
-            bottomNav.selectedItemId = R.id.tab_skills
+            bottomNav.selectedItemId = R.id.tab_library
         }
 
         // Animated placeholder
@@ -951,9 +952,6 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener, Recogniti
             }
             .show()
     }
-
-    private fun canExecuteTool(tool: String): Boolean =
-    isToolEnabled(tool)
 
     // === MEMORY FUNCTIONS FOR SCRIPT ===
     private val memoryDB by lazy { MemoryDB(this) }
@@ -8020,13 +8018,14 @@ Generate JavaScript automation code for the user's command:
 
     private fun tryReInitChatButtons() {
         try {
+            val activeFragmentView = supportFragmentManager.fragments.firstOrNull { it.isVisible }?.view
             if (runCommandButton == null) {
-                currentFragment?.view
+                activeFragmentView
                     ?.findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.runCommandButton)
                     ?.setOnClickListener { sendCommand() }
             }
             if (commandInput == null) {
-                currentFragment?.view
+                activeFragmentView
                     ?.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.commandInput)
                     ?.setOnEditorActionListener { _, _, _ ->
                         sendCommand()
