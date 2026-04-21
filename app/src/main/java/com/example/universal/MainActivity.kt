@@ -89,7 +89,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.button.MaterialButton
-import android.content.Intent
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.appcompat.widget.Toolbar

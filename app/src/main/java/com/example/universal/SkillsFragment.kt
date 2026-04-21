@@ -141,24 +141,6 @@ class SkillsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         try {
             val rv = view.findViewById<RecyclerView>(R.id.skillsRecyclerView)
-            val tabs = view.findViewById<TabLayout>(R.id.libraryTabs)(R.id.libraryTabs)
-
-            tabs.removeAllTabs()
-            tabs.addTab(tabs.newTab().setText("Skills"))
-            tabs.addTab(tabs.newTab().setText("Tools (${tools.size})"))
-
-            tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                override fun onTabSelected(tab: TabLayout.Tab) {
-                    when (tab.position) {
-                        0 -> showSkills(rv)
-                        1 -> showTools(rv)
-                    }
-                }
-
-                override fun onTabUnselected(tab: TabLayout.Tab) {}
-                override fun onTabReselected(tab: TabLayout.Tab) {}
-            })
-
             showTools(rv)
         } catch (e: Exception) {
             Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()

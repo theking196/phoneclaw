@@ -127,10 +127,9 @@ class ToolsAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         val tool = tools[position]
         holder.itemView.apply {
-            findViewById<TextView>(R.id.toolExample)(R.id.toolName)?.text = tool.name
-            findViewById<TextView>(R.id.toolExample)(R.id.toolDescription)?.text = tool.description
-            findViewById<TextView>(R.id.toolExample)(R.id.toolSyntax)?.text = tool.syntax
-            findViewById<TextView>(R.id.toolExample)(R.id.toolExample)?.text = "Ex: ${tool.example}"
+            findViewById<TextView>(R.id.toolName)?.text = tool.name
+            findViewById<TextView>(R.id.toolDescription)?.text = tool.description
+            findViewById<TextView>(R.id.toolSyntax)?.text = tool.syntax
         }
     }
 
